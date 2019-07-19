@@ -1,0 +1,25 @@
+nii_average restoration:
+
+- iterate nii/output/XXXX for all patients
+- run nii_mean_stdev_roi_2 with fnm =
+	/pre/std_space/perfusion_norm.nii.gz 
+ 	/post/std_space/perfusion_norm.nii.gz
+
+and roi = rvascular.nii (NOTE: how did convert the .hdr and .img into a .nii?)
+
+- make a modified nii_mean_stdev_roi_2 that takes an array of rois by number:
+	[3,4,5,6,15,16] I think?
+
+- mask out
+	mimg = img(rimg == roi(i)); 
+	mimg = img(mimg > 0); % voxels that are > 0?? can't remember
+
+- count the difference of voxels from start to end and take percentage.
+	orig = numel(mimg) ??
+
+
+- nii_mean_stdev_roi_2 returns a mean/median value and % of voxels that survived the masking
+
+- .csv file has the following header for both a mean and median file:
+
+Subject,Pre-LMCA,%,Pre-RMCA,%,Pre-LPCA,%,Pre-RPCA,%,Pre-RCERA(15),%,Pre-LCERA(16),%,Post-LMCA,%,Post-RMCA,%,Post-LPCA,%,Post-RPCA,%,Post-RCERA(15),%,Post-LCERA(16),%

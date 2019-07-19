@@ -1,0 +1,5 @@
+# Specify filepatterns you want git to ignore.
+
+dcm2niix/
+dicm2nii/
+spmScripts/
